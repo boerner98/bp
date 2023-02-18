@@ -13,11 +13,8 @@
         https://stackoverflow.com/questions/10698636/css-two-divs-width-50-in-one-line-with-line-break-in-file -->
         <div class="mt-4">
             <x-input-label for="breeder" :value="__('Ich bin Züchter')"/>
-            <select class="form-select @error('breeder') is-invalid @enderror" id="breeder" name="Züchter" onchange="alert('Ausgewählt: ' +this.value)">
-                <option selected disabled="disabled">Bitte auswählen</option> <!--https://xhtmlforum.de/69468-standardtext-f-r-auswahlbox-dropdown.html -->
-                <option :value="old(1)">Ja</option>
-                <option :value="old(0)">Nein</option>
-            </select>
+            <input type="radio" name="breeder" value="1" id="breederyes"onclick="getvalue()"> Ja
+            <input type="radio" name="breeder" value="0" id="breederno" checked="checked" onclick="getvalue()"> Nein
             <x-input-error :messages="$errors->get('breeder')" class="mt-2" />
 
         </div>
@@ -64,7 +61,7 @@
               <x-input-label for="datenschutz"/>
                <a class ="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="http://bit.ly/2TBFHu2">
                    {{__('Ich habe die Datenschutzerklärung und den Disclaimer zur Kenntnis genommen.')}} </a>
-              <input type="checkbox" name="datenschutz" value="ja" id="datenschutz_checked">
+              <input type="checkbox" name="datenschutz" value="ja" id="datenschutz_checked" required>
         </div>
 
         <div class="flex items-center justify-end mt-4">
@@ -72,9 +69,20 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="flex items-center justify-end ml-4">
+            <x-primary-button class="flex items-center justify-end ml-4" onclick="radiobutton()">
                 {{ __('Account erstellen') }}
             </x-primary-button>
         </div>
     </form>
+
+    <script>
+        function getvalue(){
+            if(document.getElementById('breederyes').checked){
+                alert('Züchter');
+            }
+            else if(document.getElementById('breederno').checked){
+                alert('Kein Züchter');
+            }
+        }
+    </script>
 </x-guest-layout>

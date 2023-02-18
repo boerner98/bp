@@ -29,8 +29,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/register',function (){
-    $zuchter = App\Models\Zuchter::all();
-    return view('register',['zuchter' => $zuchter]);
+    return view('register',);
 });
 
 require __DIR__.'/auth.php';

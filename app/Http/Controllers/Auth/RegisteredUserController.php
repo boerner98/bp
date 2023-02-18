@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Symfony\Component\Console\Input\Input;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use function PHPUnit\Framework\stringContains;
 
 /*https://dev.to/kingsconsult/customize-laravel-auth-laravel-breeze-registration-and-login-1769*/
 
@@ -40,6 +43,7 @@ class RegisteredUserController extends Controller
             'address' => ['string','max:255'],
             'plz' => ['integer'],
             'ort' => ['string','max:255'],
+            'breeder' =>['boolean'],
         ]);
 
         $user = User::create([
@@ -47,9 +51,13 @@ class RegisteredUserController extends Controller
             'vorname' => $request -> vorname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'address' => $request->address,
-            'plz' => $request -> plz,
-            'ort' => $request -> ort,
+            //'address' => $request->address,
+            //'plz' => $request -> plz,
+            //'ort' => $request -> ort,
+            'breeder' => $request->breeder,
+            $output = new ConsoleOutput(3),
+            $zuchter = $request->breeder,
+            $output->writeln('Breeder ist: '.$zuchter),
         ]);
 
         event(new Registered($user));

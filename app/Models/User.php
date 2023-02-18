@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'vorname',
         'email',
         'password',
+        'breeder',
         'address',
         'plz',
         'ort',
@@ -45,5 +46,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'breeder' => 'boolean',
     ];
 }
