@@ -4,17 +4,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-
-                    </a>
-                </div>-->
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight margin-auto" >
-                            {{ __('Meine Teckel') }}
+                            <a href="{{ route('dashboard') }}">
+                                {{ __('Meine Teckel') }}
+                            </a>
                         </h2>
                 </div>
             </div>
@@ -36,7 +31,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Mein Profil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -46,7 +41,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Abmelden') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

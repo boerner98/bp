@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\Input;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use function PHPUnit\Framework\stringContains;
 
-/*https://dev.to/kingsconsult/customize-laravel-auth-laravel-breeze-registration-and-login-1769*/
+/* https://dev.to/kingsconsult/customize-laravel-auth-laravel-breeze-registration-and-login-1769 */
 
 class RegisteredUserController extends Controller
 {
@@ -40,10 +40,11 @@ class RegisteredUserController extends Controller
             'vorname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'address' => ['string','max:255'],
-            'plz' => ['integer'],
-            'ort' => ['string','max:255'],
             'breeder' =>['boolean'],
+            'address' => ['string', 'nullable'],
+            'plz' => ['integer','nullable', 'digits:5'], //https://stackoverflow.com/questions/39539436/validating-a-numeric-inputs-length-in-laravel-5
+            'ort' => ['string', 'nullable'],
+            'kontakt' => ['string'],
         ]);
 
         $user = User::create([
@@ -51,13 +52,11 @@ class RegisteredUserController extends Controller
             'vorname' => $request -> vorname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            //'address' => $request->address,
-            //'plz' => $request -> plz,
-            //'ort' => $request -> ort,
+            'address' => $request->address,
+            'plz' => $request -> plz,
+            'ort' => $request -> ort,
             'breeder' => $request->breeder,
-            $output = new ConsoleOutput(3),
-            $zuchter = $request->breeder,
-            $output->writeln('Breeder ist: '.$zuchter),
+            'kontakt' => $request->kontakt,
         ]);
 
         event(new Registered($user));

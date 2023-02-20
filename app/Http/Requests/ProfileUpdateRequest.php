@@ -18,7 +18,16 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['string', 'max:255'],
             'vorname' => ['string', 'max:255'],
+            'breeder' => ['boolean'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'address' => ['string', 'nullable'],
+            'plz' => ['integer','nullable', 'digits:5'],
+            'ort' => ['string', 'nullable'],
+            'kontakt' =>['string'],
+            'homepage' => ['string', 'nullable'],
+            'grund_teckel' => ['string','nullable'],
+            'mobilenumber' => ['numeric', 'nullable', 'digits_between:10,15'],
+            'phonenumber' => ['numeric', 'nullable', 'digits_between:10,15']
         ];
     }
 }

@@ -27,6 +27,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'address',
         'plz',
         'ort',
+        'kontakt',
+        'phonenumber',
+        'mobilenumber',
+        'grund_teckel',
+        'homepage',
     ];
 
     /**
@@ -44,8 +49,14 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<string, string>
      */
+    /** https://stackoverflow.com/questions/62545618/laravel-7-adding-radio-in-register-form  */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'breeder' => 'boolean',
+        'plz' => 'integer',
+        'kontakt' => 'string',
+        'phonenumber' => 'string',
+        'mobilenumber' => 'string',
+        'grund_teckel' => 'string',
     ];
 }
