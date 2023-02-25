@@ -24,10 +24,10 @@ class ProfileUpdateRequest extends FormRequest
             'plz' => ['integer','nullable', 'digits:5'],
             'ort' => ['string', 'nullable'],
             'kontakt' =>['string'],
-            'homepage' => ['string', 'nullable'],
+            'homepage' => ['url', 'nullable'], //https://www.itsolutionstuff.com/post/laravel-url-validation-rule-exampleexample.html
             'grund_teckel' => ['string','nullable'],
-            'mobilenumber' => ['numeric', 'nullable', 'digits_between:10,15'],
-            'phonenumber' => ['numeric', 'nullable', 'digits_between:10,15']
+            'mobilenumber' => ['numeric', 'nullable', 'regex:/^[0][0-9]{10,15}/','digits_between:10,15'],
+            'phonenumber' => ['numeric', 'nullable', 'regex:/^[0][0-9]{10,15}/', 'digits_between:10,15']
         ];
     }
 }

@@ -41,7 +41,7 @@ return [
     'declined_if' => 'Das :attribute muss abgelehnt werden, wenn :other :value ist.',
     'different' => 'Das :attribute und :other müssen unterschiedlich sein.',
     'digits' => 'Das :attribute muss :digits Ziffern sein.',
-    'digits_between' => 'Das :attribute muss zwischen :min und :max digits liegen.',
+    'digits_between' => 'Die Eingabe muss zwischen :min und :max Ziffern liegen.',
     'dimensions' => 'Das :attribute hat ungültige Bildabmessungen.',
     'distinct' => 'Das Feld :attribute hat einen doppelten Wert.',
     'doesnt_end_with' => 'Das :attribute darf nicht mit einem der folgenden enden: :values.',
@@ -105,20 +105,20 @@ return [
     'multiple_of' => 'Das :attribute muss ein Vielfaches von :value sein.',
     'not_in' => 'Das ausgewählte :attribute ist ungültig.',
     'not_regex' => 'Das :attribute Format ist ungültig.',
-    'numeric' => 'Das :attribute muss eine Zahl sein.',
+    'numeric' => 'Die Eingabe muss eine Zahl sein.',
     'passwort' => [
-    'letters' => 'Das :attribute muss mindestens einen Buchstaben enthalten.',
-        'mixed' => 'Das :attribute muss mindestens einen Groß- und einen Kleinbuchstaben enthalten.',
-        'numbers' => 'Das :attribute muss mindestens eine Zahl enthalten.',
-        'symbols' => 'Das :attribute muss mindestens ein Symbol enthalten.',
-        'uncompromised' => 'Das angegebene :attribute ist in einem Datenleck aufgetaucht. Bitte wählen Sie ein anderes :attribute.',
+    'letters' => 'Das Passwort muss mindestens einen Buchstaben enthalten.',
+        'mixed' => 'Das Passwort muss mindestens einen Groß- und einen Kleinbuchstaben enthalten.',
+        'numbers' => 'Das Passwort muss mindestens eine Zahl enthalten.',
+        'symbols' => 'Das Passwort muss mindestens ein Symbol enthalten.',
+        'uncompromised' => 'Das angegebene Passwort ist in einem Datenleck aufgetaucht. Bitte wählen Sie ein anderes Passwort.',
     ],
     'present' => 'Das :attribute Feld muss vorhanden sein.',
     'prohibited' => 'Das :attribute feld ist verboten.',
     'prohibited_if' => 'Das :attribute Feld ist verboten, wenn :other :value ist.',
     'prohibited_unless' => 'Das Feld :attribute ist verboten, wenn :other nicht in :values steht.',
     'prohibits' => 'Das :attribute-Feld verbietet das Vorhandensein von :other.',
-    'regex' => 'Das :attribute format ist ungültig.',
+    'regex' => 'Das :attribute Format ist ungültig.',
     'required' => 'Das :attribute feld ist erforderlich.',
     'required_array_keys' => 'Das :attribute Feld muss Einträge enthalten für: :values.',
     'required_if' => 'Das :attribute Feld ist erforderlich, wenn :other :value ist.',
@@ -155,11 +155,18 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
-
+    //Felix https://laravel.com/docs/10.x/validation#specifying-custom-messages-in-language-files
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'mobilenumber' => [
+            'regex' => 'Die Handynummer muss mit einer 0 beginnen',
+            'digits_between:' => 'Die Handynummer muss zwischen 10 und 15 digits liegen.',
         ],
+        'phonenumber' => [
+            'regex' => 'Die Telefonnummer muss mit einer 0 beginnen',
+        ],
+        'homepage' => [
+            'url' => 'Die Eingabe muss eine gültige URL sein',
+        ]
     ],
 
     /*

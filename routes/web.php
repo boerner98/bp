@@ -32,4 +32,8 @@ Route::get('/register',function (){
     return view('register',);
 });
 
+Route::get('/dashboard/teckelregister',function (){
+    return view('teckelregister',);
+})->middleware(['auth', 'verified'])->name('teckelregister');
+
 require __DIR__.'/auth.php';

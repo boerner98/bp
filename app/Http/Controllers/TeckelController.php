@@ -3,84 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teckel;
-use App\Http\Requests\StoreTeckelRequest;
-use App\Http\Requests\UpdateTeckelRequest;
+use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class TeckelController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Handle an incoming registration request.
      *
-     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function index()
+    public function store(Request $request): RedirectResponse
     {
-        //
-    }
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'zuchtbuch' => ['required', 'string', 'max:255'],
+            'zuchtbuchnr' =>['required', 'string', 'max:255'],
+            'birthday' => ['date','nullable'],
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $teckel = Teckel::create([
+            'name' => $request->name,
+            'zuchtbuch' => $request->zuchtbuch,
+            'zuchtbuchnr' => $request->zuchtbuchnr,
+            'birthday' => $request->birthday,
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreTeckelRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreTeckelRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Teckel  $teckel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Teckel $teckel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Teckel  $teckel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Teckel $teckel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateTeckelRequest  $request
-     * @param  \App\Models\Teckel  $teckel
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateTeckelRequest $request, Teckel $teckel)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Teckel  $teckel
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Teckel $teckel)
-    {
-        //
+        return redirect(RouteServiceProvider::HOME);
     }
 }

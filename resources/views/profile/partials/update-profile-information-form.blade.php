@@ -75,7 +75,7 @@
 
         <div>
             <x-input-label for="ort" :value="__('Ort')" />
-            <x-text-input id="ort" name="ort" type="text" class="mt-1 block w-full" :value="old('otz', $user->ort)"/>
+            <x-text-input id="ort" name="ort" type="text" class="mt-1 block w-full" :value="old('ort', $user->ort)"/>
             <x-input-error class="mt-2" :messages="$errors->get('ort')" />
         </div>
 
@@ -90,7 +90,7 @@
 
         <div>
             <x-input-label for="mobilenumber" :value="__('Handynummer')" />
-            <x-text-input id="mobilenumber" name="mobilenumber" type="integer" class="mt-1 block w-full" value="__('+49')" :value="old( 'mobilenumber', $user->mobilenumber)"/>
+            <x-text-input id="mobilenumber" name="mobilenumber" type="integer" class="mt-1 block w-full" value="__('+49')" :value="old('mobilenumber', $user->mobilenumber)"/>
             <x-input-error class="mt-2" :messages="$errors->get('mobilenumber')" />
         </div>
 
@@ -98,6 +98,12 @@
             <x-input-label for="phonenumber" :value="__('Festnetznummer')" />
             <x-text-input id="phonenumber" name="phonenumber" type="integer" class="mt-1 block w-full" :value="old('phonenumber', $user->phonenumber)"/>
             <x-input-error class="mt-2" :messages="$errors->get('phonenumber')" />
+        </div>
+
+        <div>
+            <x-input-label for="homepage" :value="__('Homepage')" />
+            <x-text-input id="homepage" name="homepage" type="text" class="mt-1 block w-full" :value="old('homepage', $user->homepage)"/>
+            <x-input-error class="mt-2" :messages="$errors->get('homepage')" />
         </div>
 
         <div>
